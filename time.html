@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<body>
+<style>
+  body{display: block;
+      margin:0;
+  }
+  .time{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    color:#ffffff;
+    flex-direction:column;
+  } 
+  .title{
+    margin: 0;
+  }
+  .title-text{
+    font-size: 1em;
+    margin: 0;
+  }
+  .clock{
+    font-size: 3.5em;
+    margin: 0;
+  }
+  
+</style>
+<body ng-app="MyApp">
+
+  <div class="time" ng-controller='TimeCtrl' style="background-color:#{{ clock | date:'HHmmss'}}">
+    <h1 class="title">Hex color clock  </h1>
+    <h1 class="title-text">made in angularjs and css3 flexbox</h1>
+    <h2 class="clock" ng-model="myColor">#{{ clock | date:'HH:mm:ss'}}</h2>
+  </div>
+
+</body>
+
+<script>
+var module = angular.module("MyApp", []);
+
+module.controller('TimeCtrl', function($scope, $interval) {
+  var tick = function() {
+    $scope.clock = Date.now();
+    
+    //inte denna
+    //console.log(tick());
+  }
+  tick();
+  $interval(tick, 1000);
+  
+
+});
+
+
+
+
+</script>
+
+</body>
+</html>
